@@ -5,8 +5,20 @@ import PropTypes from 'prop-types';
 class Form extends Component {
   render() {
     // eslint-disable-next-line react/prop-types
-    const { cardName, onInputChange, cardDescription,
-      cardAttr1, cardAttr2, cardAttr3, cardImage, cardTrunfo } = this.props;
+    const {
+      state: {
+        cardName,
+        cardDescription,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+        cardImage,
+        cardTrunfo,
+        // hasTrunfo,
+        isSaveButtonDisabled,
+      },
+      onInputChange,
+      onSaveButtonClick } = this.props;
 
     return (
       <div className="Form">
@@ -84,7 +96,7 @@ class Form extends Component {
             <select
               data-testid="rare-input"
               name="rarity"
-              value={ cardRare }
+              // value={ cardRare }
               onChange={ onInputChange }
             >
               <option value="normal">Normal</option>
@@ -120,16 +132,18 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
-  isSaveButtonDisabled: PropTypes.bool.isRequired,
+  state: PropTypes.shape({
+    cardName: PropTypes.string.isRequired,
+    cardDescription: PropTypes.string.isRequired,
+    cardAttr1: PropTypes.string.isRequired,
+    cardAttr2: PropTypes.string.isRequired,
+    cardAttr3: PropTypes.string.isRequired,
+    cardImage: PropTypes.string.isRequired,
+    // cardRare: PropTypes.bool.isRequired,
+    cardTrunfo: PropTypes.bool.isRequired,
+    // hasTrunfo: PropTypes.bool.isRequired,
+    isSaveButtonDisabled: PropTypes.bool,
+  }).isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
