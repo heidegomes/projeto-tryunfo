@@ -33,7 +33,7 @@ class Card extends React.Component {
         <div data-testid="rare-card">
           { cardRare }
         </div>
-        { cardTrunfo && <div data-testid="trunfo-card">Super Trunfo</div> } 
+        { cardTrunfo && <div data-testid="trunfo-card">Super Trunfo</div> }
       </div>
 
     );
