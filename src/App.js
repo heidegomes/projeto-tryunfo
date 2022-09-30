@@ -15,42 +15,40 @@ class App extends React.Component {
       cardRare: false,
       cardTrunfo: false,
       // hasTrunfo: false,
-      // isSaveButtonDisabled: false,
+      isSaveButtonDisabled: true,
     };
   }
 
-  // shouldEnableSaveBtn = () => {
-  //   const { cardName,
-  //     cardDescription,
-  //     cardAttr1,
-  //     cardAttr2,
-  //     cardAttr3,
-  //     cardImage,
-  //     // cardRare,
-  //     cardTrunfo,
-  //     // hasTrunfo,
-  //   } = this.state;
+  shouldEnableSaveBtn = () => {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+    } = this.state;
 
-  //   const cardNameTyped = cardName.length > 0;
-  //   const cardDescriptionTyped = cardDescription > 0;
-  //   const cardAttr1Typed = cardAttr1 > 1 && cardAttr1 < 90;
-  //   const cardAttr2Typed = cardAttr2 > 1 && cardAttr2 < 90;
-  //   const cardAttr3Typed = cardAttr3 > 1 && cardAttr3 < 90;
-  //   const cardImageTyped = cardImage > 0;
-  //   // const somatoria = (cardAttr1 + cardAttr2 + cardAttr3) < 210;
-  //     // cardRare,
-  //     // cardTrunfo,
-  //     // hasTrunfo,
+    const magicNumber = 90;
+    const magicNumberSoma = 210;
+    const cardNameTyped = cardName.length !== 0;
+    const cardDescriptionTyped = cardDescription.length !== 0;
+    const cardAttr1Typed = Number(cardAttr1) >= 0 && Number(cardAttr1) <= magicNumber;
+    const cardAttr2Typed = Number(cardAttr2) >= 0 && Number(cardAttr2) <= magicNumber;
+    const cardAttr3Typed = Number(cardAttr3) >= 0 && Number(cardAttr3) <= magicNumber;
+    const cardImageTyped = cardImage.length !== 0;
+    const sumAtt = (Number(cardAttr1)
+    + Number(cardAttr2) + Number(cardAttr3)) <= magicNumberSoma;
 
-  //   this.setState({ isSaveButtonDisabled: cardNameTyped && cardDescriptionTyped && cardAttr1Typed
-  //   && cardAttr2Typed && cardAttr3Typed && cardImageTyped });
-  // };
+    this.setState({ isSaveButtonDisabled: !(cardNameTyped
+    && cardDescriptionTyped && cardAttr1Typed
+    && cardAttr2Typed && cardAttr3Typed && cardImageTyped
+    && sumAtt) });
+  };
 
   onInputChange = ({ target: { name, value } }) => {
-    // console.log(target);
     this.setState({
       [name]: value,
-    });
+    }, () => this.shouldEnableSaveBtn());
   };
 
   // onSaveButtonClick = () => {
@@ -66,6 +64,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      isSaveButtonDisabled,
       // hasTrunfo,
     } = this.state;
 
@@ -83,7 +82,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
-          // isSaveButtonDisabled={ isSaveButtonDisabled }
+          isSaveButtonDisabled={ isSaveButtonDisabled }
         />
         <Card
           cardName={ cardName }
