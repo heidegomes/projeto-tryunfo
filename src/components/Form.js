@@ -6,31 +6,26 @@ class Form extends Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const {
-      state: {
-        cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-        cardTrunfo,
-        // hasTrunfo,
-        isSaveButtonDisabled,
-      },
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardTrunfo,
+      // hasTrunfo,
+      isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick } = this.props;
 
     return (
       <div className="Form">
-        <h1>
-          {'<Componente Form />'}
-        </h1>
         <form>
           <label htmlFor="name">
             <input
               data-testid="name-input"
               type="text"
-              name="name"
+              name="cardName"
               placeholder="Name"
               value={ cardName }
               onChange={ onInputChange }
@@ -41,7 +36,7 @@ class Form extends Component {
             <input
               data-testid="description-input"
               type="textarea"
-              name="description"
+              name="cardDescription"
               placeholder="description"
               value={ cardDescription }
               onChange={ onInputChange }
@@ -52,7 +47,7 @@ class Form extends Component {
             <input
               data-testid="attr1-input"
               type="number"
-              name="atributo 1"
+              name="cardAttr1"
               placeholder="atributo 1"
               value={ cardAttr1 }
               onChange={ onInputChange }
@@ -63,7 +58,7 @@ class Form extends Component {
             <input
               data-testid="attr2-input"
               type="number"
-              name="atributo 2"
+              name="cardAttr2"
               placeholder="atributo 2"
               value={ cardAttr2 }
               onChange={ onInputChange }
@@ -74,7 +69,7 @@ class Form extends Component {
             <input
               data-testid="attr3-input"
               type="number"
-              name="atributo 3"
+              name="cardAttr3"
               placeholder="atributo 3"
               value={ cardAttr3 }
               onChange={ onInputChange }
@@ -85,7 +80,7 @@ class Form extends Component {
             <input
               data-testid="image-input"
               type="text"
-              name="image"
+              name="cardImage"
               placeholder="Image"
               value={ cardImage }
               onChange={ onInputChange }
@@ -95,7 +90,7 @@ class Form extends Component {
           <label htmlFor="rarity">
             <select
               data-testid="rare-input"
-              name="rarity"
+              name="cardRare"
               // value={ cardRare }
               onChange={ onInputChange }
             >
@@ -109,7 +104,7 @@ class Form extends Component {
             <input
               data-testid="trunfo-input"
               type="checkbox"
-              name="super trunfo"
+              name="cardTrunfo"
               value="super trunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
@@ -132,18 +127,16 @@ class Form extends Component {
 }
 
 Form.propTypes = {
-  state: PropTypes.shape({
-    cardName: PropTypes.string.isRequired,
-    cardDescription: PropTypes.string.isRequired,
-    cardAttr1: PropTypes.string.isRequired,
-    cardAttr2: PropTypes.string.isRequired,
-    cardAttr3: PropTypes.string.isRequired,
-    cardImage: PropTypes.string.isRequired,
-    // cardRare: PropTypes.bool.isRequired,
-    cardTrunfo: PropTypes.bool.isRequired,
-    // hasTrunfo: PropTypes.bool.isRequired,
-    isSaveButtonDisabled: PropTypes.bool,
-  }).isRequired,
+  cardName: PropTypes.string.isRequired,
+  cardDescription: PropTypes.string.isRequired,
+  cardAttr1: PropTypes.string.isRequired,
+  cardAttr2: PropTypes.string.isRequired,
+  cardAttr3: PropTypes.string.isRequired,
+  cardImage: PropTypes.string.isRequired,
+  // cardRare: PropTypes.bool.isRequired,
+  cardTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
+  isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
