@@ -103,6 +103,7 @@ class Form extends Component {
           </label>
 
           <label htmlFor="super trunfo">
+            Super Trunfo
             <input
               data-testid="trunfo-input"
               type="checkbox"
@@ -117,7 +118,7 @@ class Form extends Component {
             data-testid="save-button"
             disabled={ isSaveButtonDisabled }
             onClick={ onSaveButtonClick }
-            type="submit"
+            type="button"
           >
             Salvar
           </button>
@@ -135,7 +136,7 @@ Form.propTypes = {
   cardAttr2: PropTypes.string.isRequired,
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.bool.isRequired,
+  cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,

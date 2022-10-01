@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: false,
       // hasTrunfo: false,
       isSaveButtonDisabled: true,
+      cardList: [],
     };
   }
 
@@ -51,9 +52,33 @@ class App extends React.Component {
     }, () => this.shouldEnableSaveBtn());
   };
 
-  // onSaveButtonClick = () => {
-
-  // };
+  onSaveButtonClick = () => {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+    } = this.state;
+    const newCardList = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+    };
+    this.setState((prevState) => ({
+      cardList: [...prevState.cardList, newCardList],
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+    }));
+  };
 
   render() {
     const { cardName,
