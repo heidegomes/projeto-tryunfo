@@ -51,8 +51,8 @@ class App extends React.Component {
       [name]: value,
     }, () => {
       this.shouldEnableSaveBtn();
-      console.log('OnInputChange - name:', name);
-      console.log('OnInputChange - value:', value);
+      // console.log('OnInputChange - name:', name);
+      // console.log('OnInputChange - value:', value);
       if (name === 'cardTrunfo') {
         this.setState({ cardTrunfo: true });
       }
@@ -125,6 +125,7 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
+      cardList,
     } = this.state;
 
     return (
@@ -154,6 +155,21 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <section>
+          {
+            cardList.map((e) => (<Card
+              key={ e.cardName }
+              cardName={ e.cardName }
+              cardDescription={ e.cardDescription }
+              cardAttr1={ e.cardAttr1 }
+              cardAttr2={ e.cardAttr2 }
+              cardAttr3={ e.cardAttr3 }
+              cardImage={ e.cardImage }
+              cardRare={ e.cardRare }
+              cardTrunfo={ e.cardTrunfo }
+            />))
+          }
+        </section>
       </div>
     );
   }

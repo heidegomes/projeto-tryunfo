@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 class Form extends Component {
   render() {
-    // eslint-disable-next-line react/prop-types
     const {
       cardName,
       cardDescription,
