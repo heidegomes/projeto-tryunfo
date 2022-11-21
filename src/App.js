@@ -114,6 +114,13 @@ class App extends React.Component {
     return false;
   };
 
+  removeItem = ({ target }) => {
+    const { cardList } = this.state;
+    const result = cardList.filter((item) => item.cardName !== target.id);
+    this.setState({ cardList: result });
+    this.setState({ hasTrunfo: this.validateSuperTrunfo() });
+  }, () => ;
+
   render() {
     const { cardName,
       cardDescription,
@@ -157,17 +164,28 @@ class App extends React.Component {
         />
         <section>
           {
-            cardList.map((e) => (<Card
-              key={ e.cardName }
-              cardName={ e.cardName }
-              cardDescription={ e.cardDescription }
-              cardAttr1={ e.cardAttr1 }
-              cardAttr2={ e.cardAttr2 }
-              cardAttr3={ e.cardAttr3 }
-              cardImage={ e.cardImage }
-              cardRare={ e.cardRare }
-              cardTrunfo={ e.cardTrunfo }
-            />))
+            cardList?.map((e) => (
+              <div key={ e.cardName }>
+                <Card
+                  cardName={ e.cardName }
+                  cardDescription={ e.cardDescription }
+                  cardAttr1={ e.cardAttr1 }
+                  cardAttr2={ e.cardAttr2 }
+                  cardAttr3={ e.cardAttr3 }
+                  cardImage={ e.cardImage }
+                  cardRare={ e.cardRare }
+                  cardTrunfo={ e.cardTrunfo }
+                />
+                <button
+                  data-testid="delete-button"
+                  id={ e.cardName }
+                  type="button"
+                  onClick={ this.removeItem }
+                >
+                  Excluir
+                </button>
+              </div>
+            ))
           }
         </section>
       </div>
